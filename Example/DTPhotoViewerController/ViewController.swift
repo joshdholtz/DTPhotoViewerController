@@ -17,52 +17,52 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view, typically from a nib.
         
         self.makeLayout()
     }
     
-    private let SCREEN_SIZE = UIScreen.mainScreen().bounds
-    private let GAP_BETWEEN_VIEWS:CGFloat = 0.08
+    fileprivate let SCREEN_SIZE = UIScreen.main.bounds
+    fileprivate let GAP_BETWEEN_VIEWS:CGFloat = 0.08
     
     func makeLayout() {
         
         // Create four Subviews
         topLeftView.translatesAutoresizingMaskIntoConstraints = false
-        topLeftView.contentMode = UIViewContentMode.ScaleAspectFit
+        topLeftView.contentMode = UIViewContentMode.scaleAspectFit
         topLeftView.image = UIImage(named: "hero-mario.png")
-        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(self.dynamicType.imageViewTapped(_:)))
+        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(type(of: self).imageViewTapped(_:)))
         tapGesture1.numberOfTapsRequired = 1
         tapGesture1.numberOfTouchesRequired = 1
-        topLeftView.userInteractionEnabled = true
+        topLeftView.isUserInteractionEnabled = true
         topLeftView.addGestureRecognizer(tapGesture1)
         
         topRightView.translatesAutoresizingMaskIntoConstraints = false
         topRightView.image = UIImage(named: "hero-mario.png")
-        topRightView.contentMode = UIViewContentMode.ScaleAspectFit
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(self.dynamicType.imageViewTapped(_:)))
+        topRightView.contentMode = UIViewContentMode.scaleAspectFit
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(type(of: self).imageViewTapped(_:)))
         tapGesture2.numberOfTapsRequired = 1
         tapGesture2.numberOfTouchesRequired = 1
-        topRightView.userInteractionEnabled = true
+        topRightView.isUserInteractionEnabled = true
         topRightView.addGestureRecognizer(tapGesture2)
         
         bottomLeftView.translatesAutoresizingMaskIntoConstraints = false
         bottomLeftView.image = UIImage(named: "hero-mario.png")
-        bottomLeftView.contentMode = UIViewContentMode.ScaleAspectFit
-        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(self.dynamicType.imageViewTapped(_:)))
+        bottomLeftView.contentMode = UIViewContentMode.scaleAspectFit
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(type(of: self).imageViewTapped(_:)))
         tapGesture3.numberOfTapsRequired = 1
         tapGesture3.numberOfTouchesRequired = 1
-        bottomLeftView.userInteractionEnabled = true
+        bottomLeftView.isUserInteractionEnabled = true
         bottomLeftView.addGestureRecognizer(tapGesture3)
         
         bottomRightView.translatesAutoresizingMaskIntoConstraints = false
         bottomRightView.image = UIImage(named: "hero-mario.png")
-        bottomRightView.contentMode = UIViewContentMode.ScaleAspectFit
-        let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(self.dynamicType.imageViewTapped(_:)))
+        bottomRightView.contentMode = UIViewContentMode.scaleAspectFit
+        let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(type(of: self).imageViewTapped(_:)))
         tapGesture4.numberOfTapsRequired = 1
         tapGesture4.numberOfTouchesRequired = 1
-        bottomRightView.userInteractionEnabled = true
+        bottomRightView.isUserInteractionEnabled = true
         bottomRightView.addGestureRecognizer(tapGesture4)
         
         self.view.addSubview(topLeftView)
@@ -83,79 +83,79 @@ class ViewController: UIViewController {
     }
     
     func addTopRightViewConstraints() {
-        let topRightViewTrailingConstraint = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
+        let topRightViewTrailingConstraint = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
         
-        let topRightViewTopConstraint = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal
-            , toItem: view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+        let topRightViewTopConstraint = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([topRightViewTrailingConstraint, topRightViewTopConstraint])
+        NSLayoutConstraint.activate([topRightViewTrailingConstraint, topRightViewTopConstraint])
     }
     
     func addTopLeftViewConstraints() {
-        let topLeftLeadingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+        let topLeftLeadingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
         
-        let topLeftTopLeadingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0)
+        let topLeftTopLeadingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([topLeftLeadingConstraints, topLeftTopLeadingConstraints])
+        NSLayoutConstraint.activate([topLeftLeadingConstraints, topLeftTopLeadingConstraints])
     }
     
     func addBottomLeftViewConstraints() {
         
-        let bottomLeftViewLeadingConstraint = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal
-            , toItem: view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+        let bottomLeftViewLeadingConstraint = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
         
-        let bottomLeftViewBottomConstraint = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal
-            , toItem: view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
+        let bottomLeftViewBottomConstraint = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([bottomLeftViewLeadingConstraint, bottomLeftViewBottomConstraint])
+        NSLayoutConstraint.activate([bottomLeftViewLeadingConstraint, bottomLeftViewBottomConstraint])
         
     }
     
     func addBottomRightViewConstraints() {
-        let bottomRightViewTrailingConstraint = NSLayoutConstraint(item: bottomRightView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal
-            , toItem: view, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0)
+        let bottomRightViewTrailingConstraint = NSLayoutConstraint(item: bottomRightView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
         
-        let bottomRightViewBottomConstraint = NSLayoutConstraint(item: bottomRightView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal
-            , toItem: view, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0)
+        let bottomRightViewBottomConstraint = NSLayoutConstraint(item: bottomRightView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([bottomRightViewTrailingConstraint, bottomRightViewBottomConstraint])
+        NSLayoutConstraint.activate([bottomRightViewTrailingConstraint, bottomRightViewBottomConstraint])
     }
     
     func addSpacingConstraints() {
-        let topHorizontalSpacingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: topRightView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
+        let topHorizontalSpacingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: topRightView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
         
-        let bottomHorizontalSpacingConstraints = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: bottomRightView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
+        let bottomHorizontalSpacingConstraints = NSLayoutConstraint(item: bottomLeftView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: bottomRightView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
         
-        let leftVerticalSpacingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
+        let leftVerticalSpacingConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
         
-        let rightVerticalSpacingConstraints = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: bottomRightView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
+        let rightVerticalSpacingConstraints = NSLayoutConstraint(item: topRightView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: bottomRightView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: -GAP_BETWEEN_VIEWS * SCREEN_SIZE.height)
         
-        NSLayoutConstraint.activateConstraints([topHorizontalSpacingConstraints, bottomHorizontalSpacingConstraints, leftVerticalSpacingConstraints, rightVerticalSpacingConstraints])
+        NSLayoutConstraint.activate([topHorizontalSpacingConstraints, bottomHorizontalSpacingConstraints, leftVerticalSpacingConstraints, rightVerticalSpacingConstraints])
     }
     
     func addEqualConstraints() {
-        let topEqualWidthConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: topRightView, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0)
+        let topEqualWidthConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: topRightView, attribute: NSLayoutAttribute.width, multiplier: 1, constant: 0)
         
-        let topEqualHeightConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: topRightView, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
+        let topEqualHeightConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: topRightView, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
         
-        let leftEqualHeightConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 0)
+        let leftEqualHeightConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
         
-        let leftEqualWidthConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.Width, multiplier: 1, constant: 0)
+        let leftEqualWidthConstraints = NSLayoutConstraint(item: topLeftView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: bottomLeftView, attribute: NSLayoutAttribute.width, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([topEqualHeightConstraints, leftEqualHeightConstraints, topEqualWidthConstraints, leftEqualWidthConstraints])
+        NSLayoutConstraint.activate([topEqualHeightConstraints, leftEqualHeightConstraints, topEqualWidthConstraints, leftEqualWidthConstraints])
     }
     
-    func imageViewTapped(recognizer: UITapGestureRecognizer) {
+    func imageViewTapped(_ recognizer: UITapGestureRecognizer) {
         if let imageView = recognizer.view as? UIImageView {
-            if let photoViewer = DTPhotoViewerController(referenceView: imageView, image: imageView.image) {
-                self.presentViewController(photoViewer, animated: true, completion: nil)
+            if let photoViewerController = DTPhotoViewerController(referenceView: imageView, image: imageView.image) {
+                self.present(photoViewerController, animated: true, completion: nil)
             }
         }
     }
     
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .All
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .all
     }
     
     override func didReceiveMemoryWarning() {
