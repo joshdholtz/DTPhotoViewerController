@@ -61,6 +61,8 @@ open class DTPhotoViewerController: UIViewController, DTPhotoViewer {
     /// This is the image view that will animate from original frame to screen center
     ///
     open fileprivate(set) var imageView: UIImageView
+	
+	open fileprivate(set) var closeButton: UIButton
     
     
     
@@ -118,6 +120,7 @@ open class DTPhotoViewerController: UIViewController, DTPhotoViewer {
             scrollView = UIScrollView(frame: CGRect.zero)
             backgroundView = UIView(frame: CGRect.zero)
             imageView = UIImageView(frame: CGRect.zero)
+			closeButton  = UIButton(frame: CGRect.zero)
             
             super.init(nibName: nil, bundle: nil)
             
@@ -195,6 +198,17 @@ open class DTPhotoViewerController: UIViewController, DTPhotoViewer {
         //Pan gesture recognizer
         _panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(_handlePanGesture))
         scrollView.addGestureRecognizer(_panGestureRecognizer)
+		
+		// Close button
+		closeButton.setTitle("CLOSE", for: .normal)
+		closeButton.setTitleColor(UIColor.white, for: .normal)
+		closeButton.setTitleColor(UIColor.lightGray, for: .highlighted)
+		closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+		closeButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
+		closeButton.setTitleShadowColor(UIColor.black, for: .normal)
+		closeButton.addTarget(self, action: #selector(_handleClose), for: .touchUpInside)
+		closeButton.frame = CGRect(x: view.frame.width - 60 - 5, y: 5, width: 60, height: 30)
+		view.addSubview(closeButton)
         
         super.viewDidLoad()
     }
@@ -330,7 +344,12 @@ open class DTPhotoViewerController: UIViewController, DTPhotoViewer {
         // Single tap
         self.imageViewerControllerDidTapImageView()
     }
-    
+	
+	func _handleClose(_ sender: Any) {
+		closeButton.isHidden = true
+		dismiss(animated: true, completion: nil)
+	}
+	
     func _handleDoubleTapGesture(_ gesture: UITapGestureRecognizer) {
         let location = gesture.location(in: imageView)
         if let center = gesture.view?.superview?.convert(location, to: scrollView) {
