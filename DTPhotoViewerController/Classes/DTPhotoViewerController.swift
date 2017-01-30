@@ -424,7 +424,10 @@ open class DTPhotoViewerController: UIViewController, DTPhotoViewer {
         //Calculate final frame
         let size = image.size
         var destinationFrame = CGRect.zero
-        
+		
+		let imageRatio = size.width / size.height
+		let viewRatio = view.frame.size.width / view.frame.size.height
+		
 		if imageRatio > viewRatio {
 			destinationFrame.size.width = view.frame.size.width
 			destinationFrame.size.height = view.frame.size.width * (size.height / size.width)
